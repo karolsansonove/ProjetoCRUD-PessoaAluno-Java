@@ -97,12 +97,10 @@ public class Main {
     }
 
     public static void atualizarPessoa() {
-        /*System.out.println("\n==> ATUALIZAR PESSOA <==\n" +
-                "Atualize os dados solicitados:");
+        boolean result;
 
-        System.out.println("Índice:");
-        int i = scan.nextInt();
-        scan.nextLine();
+        System.out.println("\n==> ATUALIZAR PESSOA <==\n" +
+                "Atualize os dados solicitados:");
 
         System.out.println("Nome:");
         String nome = scan.nextLine();
@@ -110,20 +108,17 @@ public class Main {
         System.out.println("Telefone:");
         String telefone = scan.nextLine();
 
-        boolean atualizado = false;
-
-        while(!atualizado) {
-            String nascimento = "";
-
+        do {
             System.out.println("Data de nascimento:");
-            nascimento = scan.nextLine();
+            String nascimento = scan.nextLine();
 
             System.out.println("Índice:");
-            i = scan.nextInt();
+            int i = scan.nextInt();
             scan.nextLine();
 
-            atualizado = crud.atualizarPessoa(i, nome, telefone, nascimento);
-        }*/
+            result = crud.atualizarPessoa(i, nome, telefone, nascimento);
+        } while (!result);
+
     }
 
     public static void removerPessoaNome() {

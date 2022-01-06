@@ -45,27 +45,26 @@ public class Crud {
         return true;
     }
 
-    /*public boolean atualizarPessoa(int i, String nome, String telefone, String nascimento) {
+    public boolean atualizarPessoa(int i, String nome, String telefone, String nascimento) {
+        if (!validarIndice(i)) {
+            return false;
+        }
+
+        Pessoa pessoa = this.pessoas.get(i);
         Date nascimentoDate;
 
-        if (validarIndice(i)) {
-            Pessoa pessoa = pessoas.get(i);
-
-            try {
-                nascimentoDate = FORMATO_DATA.parse(nascimento);
-            } catch (ParseException e) {
-                System.out.println("Insira uma data válida com o formato \"DD/MM/AAAA\"");
-                return false;
-            }
-
+        try {
+            nascimentoDate = FORMATO_DATA.parse(nascimento);
             pessoa.setNome(nome);
             pessoa.setTelefone(telefone);
-            pessoa.setDataNascimento(nascimentoDate);
             pessoa.atualizarUltimaAlteracao();
+            System.out.println("Atualizado com sucesso!");
             return true;
+        } catch (ParseException e) {
+            System.out.println("Inserir uma data válida no formato \"DD/MM/AAAA\"");
+            return false;
         }
-        return false;
-    }*/
+    }
 
     public void listarPessoas() {
         if (this.pessoas.isEmpty()) {
