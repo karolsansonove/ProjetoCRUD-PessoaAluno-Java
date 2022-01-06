@@ -72,9 +72,7 @@ public class Crud {
             System.out.println("Lista vazia.");
         } else {
             for (Pessoa p : this.pessoas) {
-                System.out.printf("\n>>Índice: %d\nNome: %s\nTelefone: %s\nNascimento: %s\nÚltima alteração: %s\n",
-                        pessoas.indexOf(p), p.getNome(), p.getTelefone(), FORMATO_DATA.format(p.getDataNascimento()),
-                        FORMATO_DATA_HORA.format(p.getDataUltimaAlteracao()));
+                visualizarIndice(this.pessoas.indexOf(p));
             }
         }
     }
