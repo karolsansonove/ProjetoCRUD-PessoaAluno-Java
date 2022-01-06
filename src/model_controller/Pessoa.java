@@ -1,16 +1,16 @@
-package principal;
+package model_controller;
 
 import java.util.Date;
 
 public class Pessoa {
     private final Date DATA_CADASTRO = new Date(); // VERIFICAR COMO CRIAR DATA ATUAL
     private String nome;
-    private long telefone; // VERIFICAR TIPO ADEQUADO PARA TELEFONE
+    private String telefone; // VERIFICAR TIPO ADEQUADO PARA TELEFONE
     private Date dataNascimento;
     private Date dataUltimaAlteracao;
     private float notaFinal;
 
-    public Pessoa(String nome, long telefone, Date nascimento) {
+    public Pessoa(String nome, String telefone, Date nascimento) {
         this.nome = nome;
         this.telefone = telefone;
         this.dataNascimento = nascimento; // VERIFICAR COMO INSERIR DATA
@@ -36,11 +36,11 @@ public class Pessoa {
         return this.nome;
     }
 
-    public void setTelefone(long novoTelefone) {
+    public void setTelefone(String novoTelefone) {
         this.telefone = novoTelefone;
     }
 
-    public long getTelefone() {
+    public String getTelefone() {
         return this.telefone;
     }
 

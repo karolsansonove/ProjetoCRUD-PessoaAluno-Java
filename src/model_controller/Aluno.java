@@ -1,6 +1,4 @@
-package principal;
-
-import java.util.Date;
+package model_controller;
 
 public class Aluno extends Pessoa{
 

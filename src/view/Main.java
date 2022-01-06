@@ -1,9 +1,15 @@
-import javax.xml.bind.SchemaOutputResolver;
+package view;
+
+import model_controller.Crud;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
 public class Main {
     static Scanner scan = new Scanner(System.in);
+    static Crud crud = new Crud();
 
     public static void main(String[] args) {
         int op;
@@ -18,6 +24,7 @@ public class Main {
                     + "\n0 - Encerrar programa");
             System.out.print("Escolha uma opção: ");
             op = scan.nextInt();
+            scan.nextLine();
 
             switch (op) {
                 case 0:
@@ -38,6 +45,12 @@ public class Main {
                 case 5:
                     removerAluno();
                     break;
+                case 6:
+                    teste();
+                    break;
+                case 7:
+                    teste2();
+                    break;
                 default:
                     System.out.println("Opção inválida.");
             }
@@ -54,9 +67,22 @@ public class Main {
         System.out.println("Telefone: ");
         String telefone = scan.nextLine();
 
-        System.out.println("Data de nascimento: ");
-        Date nascimento = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        Date nascimentoDate = new Date();
+        boolean cadastroValido = false;
 
+        while(!cadastroValido) {
+            System.out.println("Data de nascimento: (DD/MM/AAAA)");
+            String nascimento = scan.nextLine();
+
+            cadastroValido = crud.cadastrarPessoa(nome, telefone, nascimento);
+
+            if (cadastroValido) {
+                System.out.println("Pessoa cadastrada com sucesso!");
+            } else {
+                System.out.println("Insira uma data válida com o formato \"DD/MM/AAAA\"");
+            }
+        }
     }
 
     public static void visualizarAluno() {
@@ -64,7 +90,8 @@ public class Main {
     }
 
     public static void listarAlunos() {
-        System.out.println("Listar alunos");
+        System.out.println("==> LISTAR ALUNOS <==");
+
     }
 
     public static void atualizarAluno() {
@@ -78,5 +105,24 @@ public class Main {
     public static void sair() {
         System.out.println("==> Aplicação encerrada! <==");
         System.exit(0);
+    }
+
+    public static void teste() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        sdf.setLenient(false);
+        String dataString = "05/13/2022";
+        try {
+            Date dataDate = sdf.parse(dataString);
+            System.out.println(sdf.format(dataDate));
+            System.out.println(dataDate);
+        } catch (ParseException e) {
+            System.out.println("Insira a data no formato \"DD/MM/AAAA\".");
+        }
+    }
+
+    public static void teste2() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss a");
+        Date dataDate = new Date();
+        System.out.println(sdf.format(dataDate));
     }
 }
