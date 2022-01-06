@@ -13,14 +13,14 @@ public class Pessoa {
         this.nome = nome;
         this.telefone = telefone;
         this.dataNascimento = nascimento;
-        this.dataUltimaAlteracao = new Date(); // VERIFICAR COMO CRIAR atualizar a data
+        this.dataUltimaAlteracao = new Date();
     }
 
     protected Pessoa(Pessoa pessoa) {
         this.nome = pessoa.nome;
         this.telefone = pessoa.telefone;
         this.dataNascimento = pessoa.dataNascimento;
-        this.dataUltimaAlteracao = pessoa.dataUltimaAlteracao; // VERIFICAR COMO CRIAR atualizar a data
+        this.dataUltimaAlteracao = pessoa.dataUltimaAlteracao;
     }
 
     protected Date getDataCadastro() {

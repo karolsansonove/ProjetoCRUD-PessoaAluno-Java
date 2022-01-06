@@ -106,4 +106,13 @@ public class Crud {
             System.out.println("Pessoa removida com sucesso.");
         }
     }
+
+    public void atribuirNotaFinal(int i, float nota) {
+        if (validarIndice(i)) {
+            Aluno aluno = new Aluno(pessoas.get(i));
+            aluno.setNotaFinal(nota);
+            alunos.add(aluno);
+            System.out.println("\nAtribuição de nota realizada!\nNovo aluno adicionado à lista de alunos.");
+        }
+    }
 }

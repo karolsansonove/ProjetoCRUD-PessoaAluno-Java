@@ -1,10 +1,6 @@
 package view;
 
 import model_controller.Crud;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Scanner;
 
 public class Main {
@@ -22,7 +18,12 @@ public class Main {
                     + "\n4 - Atualizar pessoa"
                     + "\n5 - Remover pessoa por nome"
                     + "\n6 - Remover pessoa por índice"
-                    + "\n7 - Atribuir nota final"
+                    + "\n7 - Atribuir nota final e criar novo aluno"
+                    + "\n8 - Visualizar um aluno"
+                    + "\n9 - Listar alunos"
+                    + "\n10 - Atualizar aluno"
+                    + "\n11 - Remover aluno por nome"
+                    + "\n12 - Remover aluno por índice"
                     + "\n0 - Encerrar programa");
             System.out.print("Escolha uma opção: ");
             op = scan.nextInt();
@@ -49,6 +50,24 @@ public class Main {
                     break;
                 case 6:
                     removerPessoaIndice();
+                    break;
+                case 7:
+                    atribuirNotaFinal();
+                    break;
+                case 8:
+                    visualizarAluno();
+                    break;
+                case 9:
+                    listarAluno();
+                    break;
+                case 10:
+                    atualizarAluno();
+                    break;
+                case 11:
+                    removerAlunoNome();
+                    break;
+                case 12:
+                    removerAlunoIndice();
                     break;
                 default:
                     System.out.println("Opção inválida.");
@@ -137,6 +156,25 @@ public class Main {
         scan.nextLine();
 
         crud.removerPessoaPorIndice(i);
+    }
+
+    public static void atribuirNotaFinal() {
+
+    }
+
+    private static void visualizarAluno() {
+    }
+
+    private static void listarAluno() {
+    }
+
+    private static void atualizarAluno() {
+    }
+
+    private static void removerAlunoNome() {
+    }
+
+    private static void removerAlunoIndice() {
     }
 
     public static void sair() {
