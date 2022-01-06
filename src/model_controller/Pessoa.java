@@ -23,39 +23,39 @@ public class Pessoa {
         this.dataUltimaAlteracao = pessoa.dataUltimaAlteracao; // VERIFICAR COMO CRIAR atualizar a data
     }
 
-    public Date getDataCadastro() {
+    protected Date getDataCadastro() {
         return this.DATA_CADASTRO;
     }
 
-    public void setNome(String novoNome) {
+    protected void setNome(String novoNome) {
         this.nome = novoNome;
     }
 
-    public String getNome() {
+    protected String getNome() {
         return this.nome;
     }
 
-    public void setTelefone(String novoTelefone) {
+    protected void setTelefone(String novoTelefone) {
         this.telefone = novoTelefone;
     }
 
-    public String getTelefone() {
+    protected String getTelefone() {
         return this.telefone;
     }
 
-    public void setDataNascimento(Date novaDataNascimento) {
+    protected void setDataNascimento(Date novaDataNascimento) {
         this.dataNascimento = novaDataNascimento;
     }
 
-    public Date getDataNascimento() {
+    protected Date getDataNascimento() {
         return this.dataNascimento;
     }
 
     protected void atualizarUltimaAlteracao() {
-        // this.dataUltimaAlteracao = RECEBER DATA ATUAL;
+        this.dataUltimaAlteracao = new Date();
     }
 
-    public Date getDataUltimaAlteracao() {
+    protected Date getDataUltimaAlteracao() {
         return this.dataUltimaAlteracao;
     }
 }

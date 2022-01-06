@@ -8,11 +8,11 @@ public class Aluno extends Pessoa{
         super(pessoa);
     }
 
-    public float getNotaFinal() {
+    protected float getNotaFinal() {
         return this.notaFinal;
     }
 
-    public void setNotaFinal(float novaNotaFinal) {
+    protected void setNotaFinal(float novaNotaFinal) {
         this.notaFinal = novaNotaFinal;
     }
 }

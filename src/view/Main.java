@@ -22,6 +22,7 @@ public class Main {
                     + "\n4 - Atualizar pessoa"
                     + "\n5 - Remover pessoa por nome"
                     + "\n6 - Remover pessoa por índice"
+                    + "\n7 - Atribuir nota final"
                     + "\n0 - Encerrar programa");
             System.out.print("Escolha uma opção: ");
             op = scan.nextInt();
@@ -82,20 +83,51 @@ public class Main {
     }
 
     public static void visualizarPessoa() {
-        System.out.println("Visualizar um aluno");
+        System.out.println("\n==> VISUALIZAR PESSOA <==");
+        System.out.print("Informe o índice da pessoa: ");
+        int i = scan.nextInt();
+        scan.nextLine();
+
+        crud.visualizarIndice(i);
     }
 
     public static void listarPessoa() {
-        System.out.println("\n==> LISTAR ALUNOS <==");
+        System.out.println("\n==> LISTAR PESSOAS <==");
         crud.listarPessoas();
     }
 
     public static void atualizarPessoa() {
-        System.out.println("\n==> ATUALIZAR ALUNO <==");
+        /*System.out.println("\n==> ATUALIZAR PESSOA <==\n" +
+                "Atualize os dados solicitados:");
+
+        System.out.println("Índice:");
+        int i = scan.nextInt();
+        scan.nextLine();
+
+        System.out.println("Nome:");
+        String nome = scan.nextLine();
+
+        System.out.println("Telefone:");
+        String telefone = scan.nextLine();
+
+        boolean atualizado = false;
+
+        while(!atualizado) {
+            String nascimento = "";
+
+            System.out.println("Data de nascimento:");
+            nascimento = scan.nextLine();
+
+            System.out.println("Índice:");
+            i = scan.nextInt();
+            scan.nextLine();
+
+            atualizado = crud.atualizarPessoa(i, nome, telefone, nascimento);
+        }*/
     }
 
     public static void removerPessoaNome() {
-        System.out.println("\n==> REMOVER ALUNO POR NOME <==");
+        System.out.println("\n==> REMOVER PESSOA POR NOME <==");
 
         System.out.print("Informe o nome da pessoa para removê-la: ");
         String nome = scan.nextLine();
@@ -104,9 +136,10 @@ public class Main {
     }
 
     public static void removerPessoaIndice() {
-        System.out.println("\n==> REMOVER ALUNO POR ÍNDICE <==");
+        System.out.println("\n==> REMOVER PESSOA POR ÍNDICE <==");
         System.out.print("Informe o índice da pessoa para removê-la: ");
         int i = scan.nextInt();
+        scan.nextLine();
 
         crud.removerPessoaPorIndice(i);
     }
