@@ -19,11 +19,11 @@ public class Crud {
         this.alunos = new ArrayList<Aluno>();
     }
 
-    private boolean validarIndice(int i) {
-        if (this.pessoas.isEmpty()) {
+    private boolean validarIndice(int i, ArrayList lista) {
+        if (lista.isEmpty()) {
             System.out.println("Lista vazia.");
             return false;
-        } else if (i >= this.pessoas.size() || i < 0) {
+        } else if (i >= lista.size() || i < 0) {
             System.out.println("Este índice não existe.");
             return false;
         }
@@ -46,7 +46,7 @@ public class Crud {
     }
 
     public boolean atualizarPessoa(int i, String nome, String telefone, String nascimento) {
-        if (!validarIndice(i)) {
+        if (!validarIndice(i, this.pessoas)) {
             return false;
         }
 
@@ -71,13 +71,13 @@ public class Crud {
             System.out.println("Lista vazia.");
         } else {
             for (Pessoa p : this.pessoas) {
-                visualizarIndice(this.pessoas.indexOf(p));
+                visualizarPessoaIndice(this.pessoas.indexOf(p));
             }
         }
     }
 
-    public void visualizarIndice(int i) {
-        if (validarIndice(i)) {
+    public void visualizarPessoaIndice(int i) {
+        if (validarIndice(i, this.pessoas)) {
             Pessoa pessoa = pessoas.get(i);
             System.out.printf("\n>>Índice: %d\nNome: %s\nTelefone: %s\nNascimento: %s\nÚltima alteração: %s\n",
                     i, pessoa.getNome(), pessoa.getTelefone(), FORMATO_DATA.format(pessoa.getDataNascimento()),
@@ -101,18 +101,53 @@ public class Crud {
     }
 
     public void removerPessoaPorIndice(int i) {
-        if (validarIndice(i)) {
+        if (validarIndice(i, this.pessoas)) {
             this.pessoas.remove(i);
             System.out.println("Pessoa removida com sucesso.");
         }
     }
 
     public void atribuirNotaFinal(int i, float nota) {
-        if (validarIndice(i)) {
+        if (validarIndice(i, this.pessoas)) {
             Aluno aluno = new Aluno(pessoas.get(i));
             aluno.setNotaFinal(nota);
             alunos.add(aluno);
             System.out.println("\nAtribuição de nota realizada!\nNovo aluno adicionado à lista de alunos.");
+        }
+    }
+
+    public void atualizarNota(int i, float nota) {
+        if (validarIndice(i, this.alunos)) {
+            Aluno aluno = alunos.get(i);
+            aluno.setNotaFinal(nota);
+            aluno.atualizarUltimaAlteracao();
+            System.out.println("\nAtualização de nota realizada!");
+        }
+    }
+
+    public void listarAlunos() {
+        if (this.alunos.isEmpty()) {
+            System.out.println("Lista vazia.");
+        } else {
+            for (Aluno p : this.alunos) {
+                visualizarAlunoIndice(this.alunos.indexOf(p));
+            }
+        }
+    }
+
+    public void visualizarAlunoIndice(int i) {
+        if (validarIndice(i, this.alunos)) {
+            Aluno pessoa = alunos.get(i);
+            System.out.printf("\n>>Índice: %d\nNome: %s\nTelefone: %s\nNascimento: %s\nÚltima alteração: %s\nNota final: %.1f\n",
+                    i, pessoa.getNome(), pessoa.getTelefone(), FORMATO_DATA.format(pessoa.getDataNascimento()),
+                    FORMATO_DATA_HORA.format(pessoa.getDataUltimaAlteracao()), pessoa.getNotaFinal());
+        }
+    }
+
+    public void removerAluno(int i) {
+        if (validarIndice(i, this.alunos)) {
+            this.alunos.remove(i);
+            System.out.println("Aluno removido com sucesso.");
         }
     }
 }

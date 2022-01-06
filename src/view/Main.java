@@ -21,9 +21,8 @@ public class Main {
                     + "\n7 - Atribuir nota final e criar novo aluno"
                     + "\n8 - Visualizar um aluno"
                     + "\n9 - Listar alunos"
-                    + "\n10 - Atualizar aluno"
-                    + "\n11 - Remover aluno por nome"
-                    + "\n12 - Remover aluno por índice"
+                    + "\n10 - Atualizar nota final"
+                    + "\n11 - Remover aluno"
                     + "\n0 - Encerrar programa");
             System.out.print("Escolha uma opção: ");
             op = scan.nextInt();
@@ -40,7 +39,7 @@ public class Main {
                     visualizarPessoa();
                     break;
                 case 3:
-                    listarPessoa();
+                    listarPessoas();
                     break;
                 case 4:
                     atualizarPessoa();
@@ -58,16 +57,13 @@ public class Main {
                     visualizarAluno();
                     break;
                 case 9:
-                    listarAluno();
+                    listarAlunos();
                     break;
                 case 10:
-                    atualizarAluno();
+                    atualizarNotaFinal();
                     break;
                 case 11:
-                    removerAlunoNome();
-                    break;
-                case 12:
-                    removerAlunoIndice();
+                    removerAluno();
                     break;
                 default:
                     System.out.println("Opção inválida.");
@@ -107,10 +103,10 @@ public class Main {
         int i = scan.nextInt();
         scan.nextLine();
 
-        crud.visualizarIndice(i);
+        crud.visualizarPessoaIndice(i);
     }
 
-    public static void listarPessoa() {
+    public static void listarPessoas() {
         System.out.println("\n==> LISTAR PESSOAS <==");
         crud.listarPessoas();
     }
@@ -159,22 +155,53 @@ public class Main {
     }
 
     public static void atribuirNotaFinal() {
+        System.out.println("\n==> ATRIBUIR NOTA FINAL <==");
 
+        System.out.print("Informe o índice a receber nota final: ");
+        int i = scan.nextInt();
+        scan.nextLine();
+
+        System.out.print("Informe a nota final: ");
+        float nota = scan.nextFloat();
+
+        crud.atribuirNotaFinal(i, nota);
     }
 
     private static void visualizarAluno() {
+        System.out.println("\n==> VISUALIZAR ALUNO <==");
+        System.out.print("Informe o índice do aluno: ");
+        int i = scan.nextInt();
+        scan.nextLine();
+
+        crud.visualizarAlunoIndice(i);
     }
 
-    private static void listarAluno() {
+    private static void listarAlunos() {
+        System.out.println("\n==> LISTA DE ALUNOS <==");
+        crud.listarAlunos();
     }
 
-    private static void atualizarAluno() {
+    private static void atualizarNotaFinal() {
+        System.out.println("\n==> ATUALIZAR NOTA FINAL <==\nInforme os dados para atualizar:");
+
+        System.out.print("Índice: ");
+        int i = scan.nextInt();
+        scan.nextLine();
+
+        System.out.print("Nova nota: ");
+        float nota = scan.nextFloat();
+        scan.nextLine();
+
+        crud.atualizarNota(i, nota);
     }
 
-    private static void removerAlunoNome() {
-    }
+    private static void removerAluno() {
+        System.out.println("\n==> REMOVER ALUNO <==");
+        System.out.print("Informe o índice do aluno a ser removido: ");
+        int i = scan.nextInt();
+        scan.nextLine();
 
-    private static void removerAlunoIndice() {
+        crud.removerAluno(i);
     }
 
     public static void sair() {
