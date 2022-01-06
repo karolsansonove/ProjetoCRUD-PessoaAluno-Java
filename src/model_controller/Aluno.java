@@ -4,7 +4,7 @@ public class Aluno extends Pessoa{
 
     private float notaFinal;
 
-    private Aluno(Pessoa pessoa) {
+    protected Aluno(Pessoa pessoa) {
         super(pessoa);
     }
 

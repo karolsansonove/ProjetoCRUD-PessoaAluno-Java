@@ -15,12 +15,13 @@ public class Main {
         int op;
 
         while(true) {
-            System.out.println("=========== CRUD DE ALUNOS ===========");
-            System.out.println("1 - Cadastrar novo aluno"
-                    + "\n2 - Visualizar um aluno"
-                    + "\n3 - Listar todos os alunos"
-                    + "\n4 - Atualizar aluno"
-                    + "\n5 - Remover aluno"
+            System.out.println("\n=========== CRUD DE PESSOAS ===========");
+            System.out.println("1 - Cadastrar nova pessoa"
+                    + "\n2 - Visualizar uma pessoa"
+                    + "\n3 - Listar pessoas"
+                    + "\n4 - Atualizar pessoa"
+                    + "\n5 - Remover pessoa por nome"
+                    + "\n6 - Remover pessoa por índice"
                     + "\n0 - Encerrar programa");
             System.out.print("Escolha uma opção: ");
             op = scan.nextInt();
@@ -31,25 +32,22 @@ public class Main {
                     sair();
                     break;
                 case 1:
-                    cadastrarAluno();
+                    cadastrarPessoa();
                     break;
                 case 2:
-                    visualizarAluno();
+                    visualizarPessoa();
                     break;
                 case 3:
-                    listarAlunos();
+                    listarPessoa();
                     break;
                 case 4:
-                    atualizarAluno();
+                    atualizarPessoa();
                     break;
                 case 5:
-                    removerAluno();
+                    removerPessoaNome();
                     break;
                 case 6:
-                    teste();
-                    break;
-                case 7:
-                    teste2();
+                    removerPessoaIndice();
                     break;
                 default:
                     System.out.println("Opção inválida.");
@@ -57,22 +55,20 @@ public class Main {
         }
     }
 
-    public static void cadastrarAluno() {
+    public static void cadastrarPessoa() {
         System.out.println("==> CADASTRO DE ALUNO <==\n" +
                 "Informe os dados solicitados:");
 
-        System.out.print("Nome: ");
+        System.out.println("Nome:");
         String nome = scan.nextLine();
 
-        System.out.println("Telefone: ");
+        System.out.println("Telefone:");
         String telefone = scan.nextLine();
 
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        Date nascimentoDate = new Date();
         boolean cadastroValido = false;
 
         while(!cadastroValido) {
-            System.out.println("Data de nascimento: (DD/MM/AAAA)");
+            System.out.println("Data de nascimento (DD/MM/AAAA):");
             String nascimento = scan.nextLine();
 
             cadastroValido = crud.cadastrarPessoa(nome, telefone, nascimento);
@@ -85,44 +81,38 @@ public class Main {
         }
     }
 
-    public static void visualizarAluno() {
+    public static void visualizarPessoa() {
         System.out.println("Visualizar um aluno");
     }
 
-    public static void listarAlunos() {
-        System.out.println("==> LISTAR ALUNOS <==");
-
+    public static void listarPessoa() {
+        System.out.println("\n==> LISTAR ALUNOS <==");
+        crud.listarPessoas();
     }
 
-    public static void atualizarAluno() {
-        System.out.println("Atualizar aluno");
+    public static void atualizarPessoa() {
+        System.out.println("\n==> ATUALIZAR ALUNO <==");
     }
 
-    public static void removerAluno() {
-        System.out.println("Remover aluno");
+    public static void removerPessoaNome() {
+        System.out.println("\n==> REMOVER ALUNO POR NOME <==");
+
+        System.out.print("Informe o nome da pessoa para removê-la: ");
+        String nome = scan.nextLine();
+
+        crud.removerPessoaPorNome(nome);
+    }
+
+    public static void removerPessoaIndice() {
+        System.out.println("\n==> REMOVER ALUNO POR ÍNDICE <==");
+        System.out.print("Informe o índice da pessoa para removê-la: ");
+        int i = scan.nextInt();
+
+        crud.removerPessoaPorIndice(i);
     }
 
     public static void sair() {
-        System.out.println("==> Aplicação encerrada! <==");
+        System.out.println("\n==> Aplicação encerrada! <==");
         System.exit(0);
-    }
-
-    public static void teste() {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        sdf.setLenient(false);
-        String dataString = "05/13/2022";
-        try {
-            Date dataDate = sdf.parse(dataString);
-            System.out.println(sdf.format(dataDate));
-            System.out.println(dataDate);
-        } catch (ParseException e) {
-            System.out.println("Insira a data no formato \"DD/MM/AAAA\".");
-        }
-    }
-
-    public static void teste2() {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss a");
-        Date dataDate = new Date();
-        System.out.println(sdf.format(dataDate));
     }
 }

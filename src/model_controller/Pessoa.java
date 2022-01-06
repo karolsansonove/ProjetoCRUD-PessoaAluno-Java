@@ -3,25 +3,24 @@ package model_controller;
 import java.util.Date;
 
 public class Pessoa {
-    private final Date DATA_CADASTRO = new Date(); // VERIFICAR COMO CRIAR DATA ATUAL
+    private final Date DATA_CADASTRO = new Date();
     private String nome;
-    private String telefone; // VERIFICAR TIPO ADEQUADO PARA TELEFONE
+    private String telefone;
     private Date dataNascimento;
     private Date dataUltimaAlteracao;
-    private float notaFinal;
 
-    public Pessoa(String nome, String telefone, Date nascimento) {
+    protected Pessoa(String nome, String telefone, Date nascimento) {
         this.nome = nome;
         this.telefone = telefone;
-        this.dataNascimento = nascimento; // VERIFICAR COMO INSERIR DATA
-        this.dataUltimaAlteracao = new Date(); // VERIFICAR COMO CRIAR DATA ATUAL
+        this.dataNascimento = nascimento;
+        this.dataUltimaAlteracao = new Date(); // VERIFICAR COMO CRIAR atualizar a data
     }
 
     protected Pessoa(Pessoa pessoa) {
         this.nome = pessoa.nome;
         this.telefone = pessoa.telefone;
-        this.dataNascimento = pessoa.dataNascimento; // VERIFICAR COMO INSERIR DATA
-        this.dataUltimaAlteracao = pessoa.dataUltimaAlteracao; // VERIFICAR COMO CRIAR DATA ATUAL
+        this.dataNascimento = pessoa.dataNascimento;
+        this.dataUltimaAlteracao = pessoa.dataUltimaAlteracao; // VERIFICAR COMO CRIAR atualizar a data
     }
 
     public Date getDataCadastro() {
